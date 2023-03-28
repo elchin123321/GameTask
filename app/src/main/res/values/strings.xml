@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">GameTask</string>
     <string name="choose_difficulty">Choose Difficulty</string>
+    
+    <string name="pick_number">Pick number between %d and %d </string>
+    <string name="guess_low">Your guess, %d, is too low</string>
+    <string name="guess_high">Your guess, %d, is too high</string>
+    <string name="you_win">You guessed the correct answer! %d </string>
+    <string name="guess">Guess</string>
+
+    <string name="input_number">Input number</string>
+    <string name="incorrect_number">Incorrect number</string>
+    
+    <string name="congratulations">Congratulations! You guessed Number %d</string>
+    <string name="took_tries">It took you %d tries</string>
+    <string name="try_again">Try again</string>
 </resources>

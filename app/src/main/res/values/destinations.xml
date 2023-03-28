@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="difficulty_screen">difficulty</string>
+    <string name="guess_number_screen">number</string>
+    <string name="result_screen">result</string>
+</resources>
