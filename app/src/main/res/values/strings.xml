@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GameTask</string>
+    <string name="choose_difficulty">Choose Difficulty</string>
 </resources>
