@@ -16,4 +16,6 @@
     <string name="try_again">Try again</string>
 
     <string name="back_button">back button</string>
+    <string name="devise_is_offline">Something went wrong</string>
+    <string name="retry">Retry</string>
 </resources>

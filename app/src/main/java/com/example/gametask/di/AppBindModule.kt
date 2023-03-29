@@ -1,7 +1,7 @@
 package com.example.gametask.di
 
 import com.example.gametask.data.ResourceProvider
-import com.example.gametask.data.firebase.RemoteConfigDataSource
+import com.example.gametask.data.firebase.RemoteConfigManager
 import com.example.gametask.data.firebase.SharedPreferencesDataSource
 import com.example.gametask.data.guess_game.GuessGameRepository
 import dagger.Binds
@@ -24,11 +24,12 @@ interface AppBindModule {
 
     @Binds
     fun bindRemoteConfigDataSource(
-        remoteConfig:RemoteConfigDataSource.Base
-    ):RemoteConfigDataSource
+        remoteConfigManager:RemoteConfigManager.Base
+    ):RemoteConfigManager
 
     @Binds
     fun bindSharedPreferencesDataSource(
         preferences: SharedPreferencesDataSource.Base
     ):SharedPreferencesDataSource
+
 }

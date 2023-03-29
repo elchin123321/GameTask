@@ -1,22 +1,21 @@
 package com.example.gametask.ui
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.gametask.data.firebase.RemoteConfigDataSource
+import com.example.gametask.data.firebase.RemoteConfigManager
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 @HiltViewModel
-class AppViewModel @Inject constructor(private val remoteConfig: RemoteConfigDataSource) :
-    ViewModel() {
+class AppViewModel @Inject constructor(
+    private val remoteConfig: RemoteConfigManager,
+) : ViewModel() {
 
-    var uiState: AppUiState by mutableStateOf(AppUiState.Loading)
+    var uiState = MutableStateFlow<AppUiState>(AppUiState.Loading)
         private set
 
     init {
@@ -24,15 +23,19 @@ class AppViewModel @Inject constructor(private val remoteConfig: RemoteConfigDat
     }
 
     fun fetchConfig() {
-        uiState = AppUiState.Loading
-        viewModelScope.launch {
-            delay(1000)
-            try {
-                uiState = AppUiState.Success(remoteConfig.getConfig())
-            } catch (e: java.lang.Exception) {
-                uiState = AppUiState.Error
-            }
+        uiState.value = AppUiState.Loading
+        viewModelScope.launch(Dispatchers.IO) {
+            remoteConfig.getConfig(
+                onSuccess = {config->
+                    uiState.value = AppUiState.Success(config)
+                },
+                onFailure = {
+                    uiState.value = AppUiState.Error
+                }
+            )
 
         }
     }
+
+
 }
