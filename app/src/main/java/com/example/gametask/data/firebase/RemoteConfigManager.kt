@@ -1,6 +1,5 @@
 package com.example.gametask.data.firebase
 
-import android.util.Log
 import com.example.gametask.R
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.ktx.remoteConfig
@@ -23,10 +22,9 @@ interface RemoteConfigManager {
 
             remoteConfig.fetchAndActivate().addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    val link = remoteConfig.getString("link")
-                    val status = remoteConfig.getBoolean("status")
+                    val link = remoteConfig.getString(LINK)
+                    val status = remoteConfig.getBoolean(STATUS)
                     val linkPref = preferences.getLink()
-                    Log.d("LinkPref",linkPref)
                     val config = if (linkPref != SharedPreferencesDataSource.Base.DEFAULT) {
                         if (linkPref != link) {
                             preferences.putLink(link)
@@ -43,6 +41,11 @@ interface RemoteConfigManager {
                 }
             }
 
+        }
+
+        companion object{
+            private const val LINK = "link"
+            private const val STATUS = "status"
         }
 
     }
