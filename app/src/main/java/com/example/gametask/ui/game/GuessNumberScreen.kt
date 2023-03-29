@@ -11,6 +11,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -19,7 +20,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import com.example.gametask.R
-import java.lang.NumberFormatException
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -27,19 +27,21 @@ fun GuessNumberScreen(
     uiState: UiState,
     onGuessNumber: (number: Int) -> Boolean,
     onNumberGuessed: () -> Unit,
-    onBackPressed:()->Unit,
+    onBackPressed: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     BackHandler {
         onBackPressed()
     }
-    var numberInput by remember {
+    val keyboardController = LocalSoftwareKeyboardController.current
+    var numberInput by rememberSaveable {
         mutableStateOf("")
     }
-    var isError by remember {
+    var isError by rememberSaveable {
         mutableStateOf(false)
     }
-    val keyboardController = LocalSoftwareKeyboardController.current
+
+
     Column(
         modifier = modifier
             .fillMaxWidth(),
@@ -51,12 +53,13 @@ fun GuessNumberScreen(
         OutlinedTextField(
             value = numberInput,
             onValueChange = {
+                isError = false
                 numberInput = it
             },
             label = { Text(text = stringResource(id = R.string.input_number)) },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.NumberPassword,
-                imeAction = ImeAction.Done
+                imeAction = ImeAction.Done,
             ),
             isError = isError,
             singleLine = true

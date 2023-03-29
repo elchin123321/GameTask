@@ -14,4 +14,6 @@
     <string name="congratulations">Congratulations! You guessed Number %d</string>
     <string name="took_tries">It took you %d tries</string>
     <string name="try_again">Try again</string>
+
+    <string name="back_button">back button</string>
 </resources>

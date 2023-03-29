@@ -15,7 +15,7 @@ import com.example.gametask.R
 
 @Composable
 fun SplashScreen(
-    modifier: Modifier
+    modifier: Modifier = Modifier
 ) {
     val alphaTransaction = rememberInfiniteTransition()
     val alpha = alphaTransaction.animateFloat(

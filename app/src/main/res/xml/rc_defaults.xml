@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+    <entry>
+        <key>link</key>
+        <value>https://www.youtube.com</value>
+    </entry>
+    <entry>
+        <key>status</key>
+        <value>true</value>
+    </entry>
+</defaultsMap>
