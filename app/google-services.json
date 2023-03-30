@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "682855295309",
+    "project_id": "gametask-bd659",
+    "storage_bucket": "gametask-bd659.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682855295309:android:a4d4fc0f12053201e12f04",
+        "android_client_info": {
+          "package_name": "com.example.gametask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "682855295309-8r1ur2605lphhglrmne0st6puvciqk5s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-wSD0ry9CA2KSZO1lj9hnu2CC1TagyKY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "682855295309-8r1ur2605lphhglrmne0st6puvciqk5s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
